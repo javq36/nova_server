@@ -1,3 +1,4 @@
+const Aseguradora = require("./aseguradora");
 const Categoria = require("./categoria");
 const Departamento = require("./departamento");
 const Producto = require("./producto");
@@ -8,6 +9,7 @@ const Usuario = require("./usuario");
 
 
 module.exports = {
+    Aseguradora,
     Categoria,
     Departamento,
     Producto,
