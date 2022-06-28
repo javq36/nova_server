@@ -3,7 +3,7 @@ const { Aseguradora } = require("../models");
 
 const obtenerAseguradoras = async (req, res = response) => {
   /* Finding all the aseguradoras in the database. */
-  const aseguradoras = await Aseguradora.find();
+  const aseguradoras = await Aseguradora.find({ estado: true });
 
   /* Checking if the array is empty or not. */
   if (aseguradoras.length !== 0) {
@@ -57,7 +57,20 @@ const crearAseguradora = async (req, res = response) => {
 
 };
 
+
+const borrarAseguradora = async(req, res = response) => {
+    
+  /* Destructuring the id property from the request body. */
+  const { id } = req.body;
+  /* Finding the aseguradora by its id and updating the estado property to false. */
+  const aseguradoraBorrada = await Aseguradora.findByIdAndUpdate( id, { estado:false }, { new:true } );
+
+  res.status(201).json(aseguradoraBorrada);
+}
+
+
 module.exports = {
   obtenerAseguradoras,
-  crearAseguradora
+  crearAseguradora,
+  borrarAseguradora
 };

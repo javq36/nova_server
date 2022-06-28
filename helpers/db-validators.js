@@ -1,4 +1,4 @@
-const { Categoria, Producto, Ticket } = require('../models');
+const { Categoria, Producto, Ticket, Aseguradora } = require('../models');
 const Role = require('../models/role');
 const Usuario = require('../models/usuario');
 
@@ -56,6 +56,15 @@ const existeTicketPorId = async( id ) => {
     }
 }
 
+const existeAseguradoraPorId = async( id ) => {
+
+    // Verificar si el correo existe
+    const existeInsurance = await Aseguradora.findById(id);
+    if ( !existeInsurance ) {
+        throw new Error(`El id no existe ${ id }`);
+    }
+}
+
 /* Validar Colecciones PERMITIDAS*/
 const coleccionesPermitidas = ( coleccion = '', coleciones = [] ) =>{
     const incluida = coleciones.includes(coleccion);
@@ -76,6 +85,7 @@ module.exports = {
     existeCategoriaPorId,
     existeProductoPorId,
     coleccionesPermitidas,
-    existeTicketPorId
+    existeTicketPorId,
+    existeAseguradoraPorId
 }
 
