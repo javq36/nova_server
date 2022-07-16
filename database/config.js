@@ -1,5 +1,25 @@
 const mongoose = require('mongoose');
+const sql = require("mssql");
 
+const dbSettings = {
+    user: "Sistemas",
+    password: "S1st3ma5+2022,.*",
+    server: "190.85.51.38",
+    /* server: "192.168.1.91", */
+    port: 1433,
+    connectionTimeout: 30000,
+    instance: "MSSQLSERVER",
+    database: "AUTOMARCOL",
+    pool: {
+      max: 20,
+      min: 0,
+      idleTimeoutMillis: 30000,
+    },
+    options: {
+      encrypt: false,
+      trustServerCertificate: true,
+    },
+  };
 
 
 const dbConnection = async() => {
@@ -11,7 +31,7 @@ const dbConnection = async() => {
             useUnifiedTopology: true,
         });
     
-        console.log('Base de datos online');
+        console.log('Base de datos MongoDB online');
 
     } catch (error) {
         console.log(error);
@@ -21,8 +41,29 @@ const dbConnection = async() => {
 
 }
 
+const getSQLConection = async () => {
+    try {
+  
+      try {
+        const pool = await sql.connect(dbSettings);
+        console.log('Base de datos MongoDB online');
+        return pool;
+        
+      } catch (error) {
+        console.log(error);
+      }
+  
+    } catch (error) {
+  
+      console.log(error);
+      return null;
+    }
+  };
+  
+
 
 
 module.exports = {
-    dbConnection
+    dbConnection,
+    getSQLConection
 }

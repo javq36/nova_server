@@ -11,11 +11,15 @@ class Server {
 
     this.paths = {
       auth: "/api/auth",
+      bajaj: "/api/bajaj",
       aseguradoras: "/api/aseguradoras",
       buscar: "/api/buscar",
       categorias: "/api/categorias",
       departamentos: "/api/departamentos",
+      fca: "/api/fca",
+      peugeot: "/api/peugeot",
       productos: "/api/productos",
+      reportes: "/api/reportes",
       tickets: "/api/tickets",
       uploads: "/api/uploads",
       usuarios: "/api/usuarios",
@@ -34,6 +38,10 @@ class Server {
   async conectarDB() {
     await dbConnection();
   }
+
+  /* async conectarDB() {
+    await getSQLConection();
+  } */
 
   middlewares() {
     // CORS
@@ -57,11 +65,15 @@ class Server {
 
   routes() {
     this.app.use(this.paths.auth, require("../routes/auth"));
+    this.app.use(this.paths.bajaj, require("../routes/bajaj"));
     this.app.use(this.paths.aseguradoras, require("../routes/aseguradoras"));
     this.app.use(this.paths.buscar, require("../routes/buscar"));
     this.app.use(this.paths.categorias, require("../routes/categorias"));
     this.app.use(this.paths.departamentos, require("../routes/departamentos"));
+    this.app.use(this.paths.fca, require("../routes/fca"));
+    this.app.use(this.paths.peugeot, require("../routes/peugeot"));
     this.app.use(this.paths.productos, require("../routes/productos"));
+    this.app.use(this.paths.reportes, require("../routes/reportes"));
     this.app.use(this.paths.tickets, require("../routes/tickets"));
     this.app.use(this.paths.uploads, require("../routes/uploads"));
     this.app.use(this.paths.usuarios, require("../routes/usuarios"));
