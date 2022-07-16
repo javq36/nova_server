@@ -17,6 +17,7 @@ class Server {
       categorias: "/api/categorias",
       departamentos: "/api/departamentos",
       fca: "/api/fca",
+      foton: "/api/foton",
       peugeot: "/api/peugeot",
       productos: "/api/productos",
       reportes: "/api/reportes",
@@ -71,6 +72,7 @@ class Server {
     this.app.use(this.paths.categorias, require("../routes/categorias"));
     this.app.use(this.paths.departamentos, require("../routes/departamentos"));
     this.app.use(this.paths.fca, require("../routes/fca"));
+    this.app.use(this.paths.foton, require("../routes/foton"));
     this.app.use(this.paths.peugeot, require("../routes/peugeot"));
     this.app.use(this.paths.productos, require("../routes/productos"));
     this.app.use(this.paths.reportes, require("../routes/reportes"));
