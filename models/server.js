@@ -17,12 +17,14 @@ class Server {
       categorias: "/api/categorias",
       departamentos: "/api/departamentos",
       fca: "/api/fca",
+      ford: "/api/ford",
       foton: "/api/foton",
       peugeot: "/api/peugeot",
       productos: "/api/productos",
       reportes: "/api/reportes",
       tickets: "/api/tickets",
       uploads: "/api/uploads",
+      usados: "/api/usados",
       usuarios: "/api/usuarios",
     };
 
@@ -72,12 +74,14 @@ class Server {
     this.app.use(this.paths.categorias, require("../routes/categorias"));
     this.app.use(this.paths.departamentos, require("../routes/departamentos"));
     this.app.use(this.paths.fca, require("../routes/fca"));
+    this.app.use(this.paths.ford, require("../routes/ford"));
     this.app.use(this.paths.foton, require("../routes/foton"));
     this.app.use(this.paths.peugeot, require("../routes/peugeot"));
     this.app.use(this.paths.productos, require("../routes/productos"));
     this.app.use(this.paths.reportes, require("../routes/reportes"));
     this.app.use(this.paths.tickets, require("../routes/tickets"));
     this.app.use(this.paths.uploads, require("../routes/uploads"));
+    this.app.use(this.paths.usados, require("../routes/usados"));
     this.app.use(this.paths.usuarios, require("../routes/usuarios"));
   }
 
